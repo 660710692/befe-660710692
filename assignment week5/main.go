@@ -7,51 +7,49 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Book struct
-type Book struct {
+// Food struct
+type Food struct {
 	ID    string `json:"id"`
 	Name  string `json:"name"`
 	Type  string `json:"type"`
 	Price int    `json:"price"`
-	Page  int    `json:"page"`
 }
 
-var books = []Book{
-	{ID: "01", Name: "Tip & Trick for freshman", Type: "Self-help", Price: 159, Page: 127},
-	{ID: "02", Name: "Detective Shane", Type: "Crime fiction", Price: 399, Page: 256},
-	{ID: "03", Name: "Dr.Who", Type: "Novel", Price: 429, Page: 420},
-	{ID: "04", Name: "Stock Market in big 25", Type: "Marketing", Price: 99, Page: 121},
-	{ID: "05", Name: "Jack Of All Trait:Season 1", Type: "Action fiction", Price: 199, Page: 233},
-	{ID: "06", Name: "BiologyTech by Mike 5th", Type: "Science", Price: 560, Page: 369},
+var foods = []Food{
+	{ID: "01", Name: "Meat steak", Type: "Main course", Price: 79},
+	{ID: "02", Name: "Pepsi", Type: "Drinks", Price: 20},
+	{ID: "03", Name: "Tomato soup", Type: "Potage soup", Price: 39},
+	{ID: "04", Name: "Vanila cake", Type: "Dessert", Price: 99},
+	{ID: "05", Name: "Pie", Type: "Dessert", Price: 79},
+	{ID: "06", Name: "Vegetable salad", Type: "Salad", Price: 59},
+	{ID: "07", Name: "Water", Type: "Drinks", Price: 10},
+	{ID: "08", Name: "Fried rice", Type: "Main course", Price: 49},
+	{ID: "09", Name: "Pork steak", Type: "Main course", Price: 79},
 }
 
-func getBooks(c *gin.Context) {
+func getFoods(c *gin.Context) {
 	priceQuery := c.Query("price")
-	pageQuery := c.Query("page")
 	typeQuery := c.Query("type")
 	idQuery := c.Query("id")
 	nameQuery := c.Query("name")
 
-	filter := []Book{}
-	for _, book := range books {
+	filter := []Food{}
+	for _, food := range foods {
 		match := true
-		if idQuery != "" && book.ID != idQuery {
+		if idQuery != "" && food.ID != idQuery {
 			match = false
 		}
-		if nameQuery != "" && book.Name != nameQuery {
+		if nameQuery != "" && food.Name != nameQuery {
 			match = false
 		}
-		if priceQuery != "" && fmt.Sprint(book.Price) != priceQuery {
+		if priceQuery != "" && fmt.Sprint(food.Price) != priceQuery {
 			match = false
 		}
-		if pageQuery != "" && fmt.Sprint(book.Page) != pageQuery {
-			match = false
-		}
-		if typeQuery != "" && book.Type != typeQuery {
+		if typeQuery != "" && food.Type != typeQuery {
 			match = false
 		}
 		if match {
-			filter = append(filter, book)
+			filter = append(filter, food)
 		}
 	}
 
@@ -62,22 +60,23 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Welcome to Book Store!")
+		c.String(http.StatusOK, "Welcome to Restaurant!")
+		c.String(http.StatusOK, " by 660710692 Kuntapong Maneekhum")
 	})
 
-	r.GET("/health", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "healthy!"})
+	r.GET("/status", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message": "Ready to serve!"})
 	})
 
 	api := r.Group("/api/v1")
 	{
-		api.GET("/books", getBooks)
+		api.GET("/foods", getFoods)
 	}
-	r.Run(":8080")
+	r.Run(":3000")
 
 }
 
-//   http://localhost:8080/api/v1/books?price=159&type=Self-help
-//   http://localhost:8080/api/v1/books
+//   http://localhost:3000/api/v1/foods?price=20
+//   http://localhost:3000/api/v1/foods
 
-//   lsof -i :8080
+//   lsof -i :3000
