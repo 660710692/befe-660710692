@@ -63,6 +63,7 @@ func main() {
 
 	r.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, "Welcome to Book Store!")
+		c.String(http.StatusOK, " by 660710692 Kuntapong Maneekhum")
 	})
 
 	r.GET("/health", func(c *gin.Context) {
@@ -73,11 +74,11 @@ func main() {
 	{
 		api.GET("/books", getBooks)
 	}
-	r.Run(":8080")
+	r.Run(":3000")
 
 }
 
-//   http://localhost:8080/api/v1/books?price=159&type=Self-help
-//   http://localhost:8080/api/v1/books
+//   http://localhost:3000/api/v1/books?price=159&type=Self-help
+//   http://localhost:3000/api/v1/books
 
-//   lsof -i :8080
+//   lsof -i :3000
