@@ -87,7 +87,6 @@ func updateStudent(c *gin.Context) {
 		}
 	}
 	c.JSON(http.StatusNotFound, gin.H{"error": "student not found"})
-	return
 }
 func deleteStudent(c *gin.Context) {
 	id := c.Param("id")
@@ -100,7 +99,6 @@ func deleteStudent(c *gin.Context) {
 		}
 	}
 	c.JSON(http.StatusNotFound, gin.H{"error": "student not found"})
-	return
 }
 
 func main() {
