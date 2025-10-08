@@ -106,6 +106,14 @@ func getAllBooks(c *gin.Context) {
 	c.JSON(http.StatusOK, books)
 }
 
+// @Summary Get book by ID
+// @Description Get details of a book by ID
+// @Tags Books
+// @Produce  json
+// @Param   id   path      int     true  "Book ID"
+// @Success 200  {object}  Book
+// @Failure 404  {object}  ErrorResponse
+// @Router /books/{id} [get]
 func getBook(c *gin.Context) {
 	id := c.Param("id")
 	var book Book
@@ -125,6 +133,16 @@ func getBook(c *gin.Context) {
 	c.JSON(http.StatusOK, book)
 }
 
+// @Summary Create a new book
+// @Description Add a new book to the database
+// @Tags Books
+// @Accept  json
+// @Produce  json
+// @Param   book  body      Book  true  "Book data"
+// @Success 201  {object}  Book
+// @Failure 400  {object}  ErrorResponse
+// @Failure 500  {object}  ErrorResponse
+// @Router /books [post]
 func createBook(c *gin.Context) {
 	var newBook Book
 
@@ -156,6 +174,18 @@ func createBook(c *gin.Context) {
 	c.JSON(http.StatusCreated, newBook) // ใช้ 201 Created
 }
 
+// @Summary Update a book by ID
+// @Description Update details of an existing book by its ID
+// @Tags Books
+// @Accept  json
+// @Produce  json
+// @Param   id    path      int    true  "Book ID"
+// @Param   book  body      Book   true  "Updated book data"
+// @Success 200   {object}  Book
+// @Failure 400   {object}  ErrorResponse
+// @Failure 404   {object}  ErrorResponse
+// @Failure 500   {object}  ErrorResponse
+// @Router /books/{id} [put]
 func updateBook(c *gin.Context) {
 	var u_id int
 	id := c.Param("id")
@@ -188,6 +218,15 @@ func updateBook(c *gin.Context) {
 	c.JSON(http.StatusOK, updateBook)
 }
 
+// @Summary Delete a book by ID
+// @Description Delete a specific book from the database by its ID
+// @Tags Books
+// @Produce  json
+// @Param   id  path      int     true  "Book ID"
+// @Success 200  {object}  map[string]string  "Success message"
+// @Failure 404  {object}  ErrorResponse
+// @Failure 500  {object}  ErrorResponse
+// @Router /books/{id} [delete]
 func deleteBook(c *gin.Context) {
 	id := c.Param("id")
 
