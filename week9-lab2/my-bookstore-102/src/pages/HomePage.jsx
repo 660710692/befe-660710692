@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon, BookOpenIcon, TruckIcon, ShieldCheckIcon } from '@heroicons/react/outline';
-import BookCard from '../components/BookCard';
 import FeaturedBooks from '../components/FeaturedBooks';
+import NewBookCard from '../components/NewBookCard';
 // import NewBooks from
 const HomePage = () => {
 
@@ -104,6 +104,22 @@ const HomePage = () => {
                   transition-opacity duration-300"></div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New Books */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">หนังสือใหม่</h2>
+            <NewBookCard />
+          <div className="text-center mt-8">
+            <Link to="/books" className="inline-flex items-center text-viridian-600 
+              hover:text-viridian-700 font-semibold text-lg group">
+              ดูหนังสือทั้งหมด
+              <ArrowRightIcon className="ml-2 h-5 w-5 group-hover:translate-x-2 
+                transition-transform" />
+            </Link>
           </div>
         </div>
       </section>

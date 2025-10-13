@@ -24,7 +24,7 @@ definitions:
       message:
         type: string
     type: object
-host: localhost:8080
+host: localhost:3000
 info:
   contact: {}
   description: This is a simple example of using Gin with Swagger.

@@ -201,7 +201,7 @@ func main() {
 	initDB()
 	defer db.Close()
 	r := gin.Default()
-
+	
 	r.GET("/health", func(c *gin.Context) {
 		err := db.Ping()
 		if err != nil {
