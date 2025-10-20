@@ -15,18 +15,20 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import LoginPage from './pages/LoginPage';
 import AddBookPage from './pages/AddBookPage';
+import BookManagePage from './pages/BookManagePage';
 
 
 function App() {
   return (
    <Router>
      <Routes>
-       {/* Admin Routes - No Navbar/Footer */}
+       {/* Admin Routes */}
        <Route path="/login" element={<LoginPage />} />
        <Route path="/store-manager/add-book" element={<AddBookPage />} />
+       <Route path="/store-manager/manage-book" element={<BookManagePage />} />
 
 
-       {/* Public Routes - With Navbar/Footer */}
+       {/* Public Routes */}
        <Route path="*" element={
          <div className="flex flex-col min-h-screen">
            <Navbar />

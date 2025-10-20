@@ -92,7 +92,6 @@ const BookListPage = () => {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">หนังสือทั้งหมด</h1>
           <p className="text-gray-600">ค้นพบหนังสือที่คุณชื่นชอบจากคอลเล็กชันของเรา</p>
         </div>
-        
         {/* Filters and Search */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="flex flex-col lg:flex-row gap-4">
